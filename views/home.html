@@ -1,0 +1,100 @@
+<div ng-controller="mainController">
+    <h1>Manage your network data</h1>
+    <br>
+    <ul class="nav nav-tabs">
+        <li role="presentation" ng-class="{'active': showMarkers}"><a id="showMarkers">Markers</a></li>
+        <li role="presentation" ng-class="{'active': showRoutes}"><a id="showRoutes">Routes</a></li>
+        <li role="presentation" ng-class="{'active': showCrosses}"><a id="showCrosses">Crosses</a></li>
+        <li role="presentation" ng-class="{'active': showMap && !showMarkers && !showRoutes && !showCrosses}">
+            <a ng-click="changeView('map')">Show Map</a>
+        </li>
+    </ul>
+    <div ng-show="welcomePage">
+        <h1>Welcome to Intelligent Transit</h1>
+        <img src="../images/Logo2.png" />
+        <h5>By Kebbe Blaban</h5>
+        <img src="../images/murano-black-serving-bowl%20(2).jpg" width="100" height="100"/>
+
+    </div>
+    <div ng-show="showMarkers">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a ng-click="changeView('addmarker')">Add Marker</a></li>
+        </ul>
+        <table ng-show="showMarkers" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Latitude</th>
+                    <th>Longtitude</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="marker in markers track by marker.id">
+                    <td>{{marker.id}}</td>
+                    <td>{{marker.title}}</td>
+                    <td>{{marker.lat}}</td>
+                    <td>{{marker.long}}</td>
+                    <td>
+                        <a class="ion-edit" ng-click="edit('marker', marker)"></a>
+                        &nbsp;&nbsp;
+                        <a class="ion-trash-b" ng-click="delete('marker', marker)"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="showRoutes">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a ng-click="changeView('addroute')">Add Route</a></li>
+        </ul>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Number</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="route in routes track by route.id">
+                    <td>{{route.id}}</td>
+                    <td>{{route.number}}</td>
+                    <td>
+                        <a class="ion-edit" ng-click="edit('route', route)"></a>
+                        &nbsp;&nbsp;
+                        <a class="ion-trash-b" ng-click="delete('route', route)"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="showCrosses">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a ng-click="changeView('makecross')">Make Cross</a></li>
+        </ul>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Cost</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cross in crosses track by cross.id">
+                    <td>{{cross.id}}</td>
+                    <td>{{cross.name}}</td>
+                    <td>{{cross.cost}}</td>
+                    <td>
+                        <a class="ion-edit" ng-click="edit('cross', cross)"></a>
+                        &nbsp;&nbsp;
+                        <a class="ion-trash-b" ng-click="delete('cross', cross)"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

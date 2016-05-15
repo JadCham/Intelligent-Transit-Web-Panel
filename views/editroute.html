@@ -1,0 +1,49 @@
+<div>
+    <div class="container">
+        <h1>Edit Route</h1>
+        <br>
+        <div>
+            <form name="routeForm">
+                <div class="form-group">
+                    <label for="number">Number</label>
+                    <input type="Text" class="form-control" id="number" placeholder="Number" ng-model="currentRoute.number" required>
+                </div>
+                <div class="form-group">
+                    <label>Markers</label>
+                    <select class="form-control" id="marker" ng-options="marker.title for marker in $root.markers" ng-model="selectedMarker" required></select>
+                    <button type="button" class="btn btn-default" ng-click="addR()">Add</button>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Latitude</th>
+                                <th>Longtitude</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="marker in currentMarkers">
+                                <td>{{marker.id}}</td>
+                                <td>{{marker.title}}</td>
+                                <td>{{marker.lat}}</td>
+                                <td>{{marker.long}}</td>
+                                <td>
+                                    <a title="Move Up" class="ion-arrow-up-a" ng-click="moveUp(marker)"></a>
+                                    <a title="Move Down" class="ion-arrow-down-a" ng-click="moveDown(marker)"></a>
+                                    <a title="Delete" class="ion-trash-b" ng-click="delete(marker)"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <div class="alert alert-success" ng-show="info_success" role="alert">Success! Route has been saved</div>
+                <div class="alert alert-danger" ng-show="error_notrouteexists" role="alert">Route doesn't exists</div>
+                <div class="alert alert-danger" ng-show="error_routeexists" role="alert">Marker already exists</div>
+                <button type="submit" class="btn btn-primary" ng-diabled="routeForm.$invalid" ng-click="editRoute()">Save</button>
+                <button type="button" class="btn btn-warning" ng-diabled="routeForm.$invalid" ng-click="revertChangesR()">Revert</button>
+            </form>
+        </div>
+    </div>
+</div>

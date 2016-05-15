@@ -1,0 +1,26 @@
+<div>
+    <div class="container">
+        <h1>Edit Marker</h1>
+        <br>
+        <div>
+            <form name="markerForm">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="Text" class="form-control" id="title" placeholder="Title" ng-model="currentTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="route">Route</label>
+                    <input type="Text" class="form-control" id="title" placeholder="Title" ng-model="currentRoute" required>
+                </div>
+                <span>Select a marker on the map</span>
+                <div id="map-container" class="col-md-6" style=" height: 300px "></div>
+                <br>
+                <div class="alert alert-danger" ng-show="error_notmarkerexists" role="alert">Marker doesn't exists</div>
+                <div class="alert alert-success" ng-show="info_success" role="alert">Success! Route has been added</div>
+                <div class="alert alert-danger" ng-show="update_failed" role="alert">Update Failed! Check connection and Try Again</div>
+                <button type="submit" class="btn btn-primary" ng-diabled="markerForm.$invalid" ng-click="editMarker()">Save</button>
+                <button type="button" class="btn btn-warning" ng-diabled="markerForm.$invalid" ng-click="revertChanges()">Revert</button>
+            </form>
+        </div>
+    </div>
+</div>

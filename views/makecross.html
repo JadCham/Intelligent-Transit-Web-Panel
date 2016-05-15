@@ -1,0 +1,52 @@
+<div>
+    <div class="container">
+        <h1>Make Cross</h1>
+        <br>
+        <div>
+            <form name="crossForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="Text" class="form-control" id="name" placeholder="Title" ng-model="cross.name" required>
+                </div>
+                <div class="form-group">
+                    <label for="cost">Cost</label>
+                    <input type="Text" class="form-control" id="cost" placeholder="Cost (100, 200, 300)" ng-model="cross.cost" required>
+                </div>
+                <div class="form-group">
+                    <label>Markers</label>
+                    <select class="form-control" id="marker" ng-options="marker.title for marker in $root.markers" ng-model="selectedMarker" required></select>
+                    <button type="button" class="btn btn-default" ng-click="add()">Add</button>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Latitude</th>
+                                <th>Longtitude</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="marker in currentMarkers">
+                                <td>{{marker.id}}</td>
+                                <td>{{marker.title}}</td>
+                                <td>{{marker.lat}}</td>
+                                <td>{{marker.long}}</td>
+                                <td>
+                                    <a title="Delete" class="ion-trash-b" ng-click="delete(marker)"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+
+                <div class="alert alert-success" ng-show="info_success" role="alert">Success! Route has been added</div>
+                <div class="alert alert-danger" ng-show="update_failed" role="alert">Update Failed! Check connection and Try Again</div>
+                <div class="alert alert-danger" ng-show="error_crossexists" role="alert">Cross already exists</div>
+
+                <button type="submit" id="makeCross" class="btn btn-primary" ng-diabled="crossForm.$invalid">Make Cross</button>
+            </form>
+        </div>
+    </div>
+</div>
