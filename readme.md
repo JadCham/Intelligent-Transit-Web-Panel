@@ -1,4 +1,7 @@
-The web panel is used to edit the JSON files. It is the crucial part of the project. It manages the data that is used to build the graph: the markers, the routes and the crosses.
+The web panel is used to edit the JSON files. It is the crucial part of the Intelligent Transit project. It manages the data that is used to build the graph: the markers, the routes and the crosses.
+
+
+https://github.com/JadCham/Intelligent-Transit
 
 
 The admin panel is a web application developed to make buses data manipulation easier. Instead of writing the data directly to file. The admin panel process data and write it to file using the update API. 
